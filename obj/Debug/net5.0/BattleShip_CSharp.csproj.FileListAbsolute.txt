@@ -1,0 +1,16 @@
+C:\Users\nateR\OneDrive\Documents\GitHub\BattleShip_CSharp\bin\Debug\net5.0\BattleShip_CSharp.exe
+C:\Users\nateR\OneDrive\Documents\GitHub\BattleShip_CSharp\bin\Debug\net5.0\BattleShip_CSharp.deps.json
+C:\Users\nateR\OneDrive\Documents\GitHub\BattleShip_CSharp\bin\Debug\net5.0\BattleShip_CSharp.runtimeconfig.json
+C:\Users\nateR\OneDrive\Documents\GitHub\BattleShip_CSharp\bin\Debug\net5.0\BattleShip_CSharp.runtimeconfig.dev.json
+C:\Users\nateR\OneDrive\Documents\GitHub\BattleShip_CSharp\bin\Debug\net5.0\BattleShip_CSharp.dll
+C:\Users\nateR\OneDrive\Documents\GitHub\BattleShip_CSharp\bin\Debug\net5.0\ref\BattleShip_CSharp.dll
+C:\Users\nateR\OneDrive\Documents\GitHub\BattleShip_CSharp\bin\Debug\net5.0\BattleShip_CSharp.pdb
+C:\Users\nateR\OneDrive\Documents\GitHub\BattleShip_CSharp\obj\Debug\net5.0\BattleShip_CSharp.csproj.AssemblyReference.cache
+C:\Users\nateR\OneDrive\Documents\GitHub\BattleShip_CSharp\obj\Debug\net5.0\BattleShip_CSharp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nateR\OneDrive\Documents\GitHub\BattleShip_CSharp\obj\Debug\net5.0\BattleShip_CSharp.AssemblyInfoInputs.cache
+C:\Users\nateR\OneDrive\Documents\GitHub\BattleShip_CSharp\obj\Debug\net5.0\BattleShip_CSharp.AssemblyInfo.cs
+C:\Users\nateR\OneDrive\Documents\GitHub\BattleShip_CSharp\obj\Debug\net5.0\BattleShip_CSharp.csproj.CoreCompileInputs.cache
+C:\Users\nateR\OneDrive\Documents\GitHub\BattleShip_CSharp\obj\Debug\net5.0\BattleShip_CSharp.dll
+C:\Users\nateR\OneDrive\Documents\GitHub\BattleShip_CSharp\obj\Debug\net5.0\ref\BattleShip_CSharp.dll
+C:\Users\nateR\OneDrive\Documents\GitHub\BattleShip_CSharp\obj\Debug\net5.0\BattleShip_CSharp.pdb
+C:\Users\nateR\OneDrive\Documents\GitHub\BattleShip_CSharp\obj\Debug\net5.0\BattleShip_CSharp.genruntimeconfig.cache
