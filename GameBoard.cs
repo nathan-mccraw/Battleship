@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Linq;
 
 namespace BattleShip_CSharp
 {
-    class GameBoard
+    internal class GameBoard
     {
         public char[,] board = new char[10, 10];
+        public int[,] ship = new int[5, 2];
+
         public GameBoard()
         {
             for (int i = 0; i < board.GetLength(0); i++)
@@ -16,6 +17,8 @@ namespace BattleShip_CSharp
                 for (int j = 0; j < board.GetLength(1); j++)
                     board[i, j] = '-';
             }
+
+            PlaceShip();
         }
 
         public void DisplayBoard()
@@ -43,11 +46,11 @@ namespace BattleShip_CSharp
                 Console.Write("|");
                 Console.WriteLine();
             };
+            Console.WriteLine();
         }
 
         public void DisplayHeader()
         {
-
             char[] header1 = Enumerable.Repeat('*', 37).ToArray();
 
             Console.WriteLine();
@@ -68,6 +71,110 @@ namespace BattleShip_CSharp
             Console.WriteLine(Indent(18) + "You have {0} turns remaining to sink the ship!", turnsLeft);
             Console.WriteLine();
             Console.Write("Enter the Alphanumeric location to shoot an artillery shell: ");
+        }
+
+        public void DisplayWinMessage()
+        {
+            Console.Clear();
+            DisplayHeader();
+            DisplayBoard();
+            Console.WriteLine(Indent(35) + "YOU WIN!!!");
+        }
+
+        public void DisplayLoseMessage()
+        {
+            Console.Clear();
+            DisplayHeader();
+            DisplayBoard();
+            Console.WriteLine(Indent(22) + "You lost, better luck next time.");
+        }
+
+        public void InvalidInputMessage()
+        {
+            Console.WriteLine("The input you entered is not a location. Please enter a location in format ex: 'A1'.");
+            Console.Write("Enter the Alphanumeric location to shoot an artillery shell: ");
+        }
+
+        public void LastShotMessage(string lastShot)
+        {
+            switch (lastShot)
+            {
+                case "RepeatShot":
+                    Console.WriteLine(Indent(18) + "You repeated a shot, you lose a turn!");
+                    Console.WriteLine();
+                    break;
+
+                case "ShotHit":
+                    Console.WriteLine(Indent(18) + "Your shot hit the ship!! Keep it Up");
+                    Console.WriteLine();
+                    break;
+
+                case "ShotMissed":
+                    Console.WriteLine(Indent(18) + "You didn't hit anything, keep trying.");
+                    Console.WriteLine();
+                    break;
+
+                default:
+                    Console.WriteLine();
+                    break;
+            }
+        }
+
+        private void PlaceShip()
+        {
+            Random rand = new Random();
+            int shipDirection = rand.Next(0, 1);
+            ship[0, 0] = rand.Next(0, 9);
+            ship[0, 1] = rand.Next(0, 9);
+
+            if (shipDirection == 0)
+            {
+                if (ship[0, 0] > 4)
+                {
+                    for (int i = 1; i < 5; i++)
+                    {
+                        ship[i, 0] = ship[0, 0] - i;
+                        ship[i, 1] = ship[0, 1];
+                    }
+                }
+                else
+                {
+                    for (int i = 1; i < 5; i++)
+                    {
+                        ship[i, 0] = ship[0, 0] + i;
+                        ship[i, 1] = ship[0, 1];
+                    }
+                }
+            }
+            else
+            {
+                if (ship[0, 1] > 4)
+                {
+                    for (int i = 1; i < 5; i++)
+                    {
+                        ship[i, 0] = ship[0, 0];
+                        ship[i, 1] = ship[0, 1] - i;
+                    }
+                }
+                else
+                {
+                    for (int i = 1; i < 5; i++)
+                    {
+                        ship[i, 0] = ship[0, 0];
+                        ship[i, 1] = ship[0, 1] + i;
+                    }
+                }
+            }
+        }
+
+        public void MarkHit(int[] location)
+        {
+            board[location[0], location[1]] = 'X';
+        }
+
+        public void MarkMiss(int[] location)
+        {
+            board[location[0], location[1]] = 'O';
         }
 
         public static string Indent(int spaces)
