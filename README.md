@@ -2,6 +2,7 @@
 
 Battleship Console Game built in C#
 
+![Preview](https://user-images.githubusercontent.com/84479635/128300474-c565446a-7132-4487-b182-a4f5a88e06df.JPG)
 
 ## Installation
 
