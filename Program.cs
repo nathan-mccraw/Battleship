@@ -11,11 +11,10 @@ namespace BattleShip_CSharp
 
             do
             {
-                string playerGuess = "";
                 string lastShot = "";
                 int turnsRemaining = 8;
                 int hitShip = 0;
-                GameBoard board = new GameBoard();
+                GameBoard board = new();
 
                 Console.Clear();
                 Console.WriteLine("Welcome to Battleship console App!");
@@ -26,19 +25,19 @@ namespace BattleShip_CSharp
                 do
                 {
                     Console.Clear();
-                    board.DisplayHeader();
+                    GameBoard.DisplayHeader();
                     board.DisplayBoard();
-                    board.LastShotMessage(lastShot);
+                    GameBoard.LastShotMessage(lastShot);
                     board.DisplayShootMessage(turnsRemaining);
-                    playerGuess = Console.ReadLine();
+                    string playerGuess = Console.ReadLine();
 
                     while (IsInputInvalid(playerGuess))
                     {
-                        board.InvalidInputMessage();
+                        GameBoard.InvalidInputMessage();
                         playerGuess = Console.ReadLine();
                     };
 
-                    PlayerShot shell = new PlayerShot(playerGuess);
+                    PlayerShot shell = new(playerGuess);
 
                     if (shell.DidRepeatShot(board.board))
                     {
@@ -78,26 +77,23 @@ namespace BattleShip_CSharp
 
         public static bool IsInputInvalid(string playerGuess)
         {
-            bool validation;
-            //65-74 for A-J, 97-106 for a-j, 48-57 for 0-9
+            //Ascii values: 65-74 for A-J, 97-106 for a-j, 48-57 for 0-9
+            bool isInvalid;
 
-            if (playerGuess.Length < 2)
-                validation = true;
-
-            if (playerGuess[0] < 65 || (playerGuess[0] > 74 && playerGuess[0] < 97) || (playerGuess[0] > 106))
-                validation = true;
+            if (playerGuess.Length < 2 || playerGuess[0] < 65 || (playerGuess[0] > 74 && playerGuess[0] < 97) || (playerGuess[0] > 106 || playerGuess[1] > 57))
+                return isInvalid = true;
 
             if (playerGuess.Length > 2)
                 if (playerGuess.Length == 3 && playerGuess[1] == 49 && playerGuess[2] == 48)
-                    validation = false;
+                    isInvalid = false;
                 else
-                    validation = true;
-            else if (playerGuess[1] < 49 || playerGuess[1] > 57)
-                validation = true;
+                    isInvalid = true;
+            else if (playerGuess[1] < 49)
+                isInvalid = true;
             else
-                validation = false;
+                isInvalid = false;
 
-            return validation;
+            return isInvalid;
         }
     }
 }

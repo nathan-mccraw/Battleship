@@ -49,7 +49,7 @@ namespace BattleShip_CSharp
             Console.WriteLine();
         }
 
-        public void DisplayHeader()
+        public static void DisplayHeader()
         {
             char[] header1 = Enumerable.Repeat('*', 37).ToArray();
 
@@ -89,13 +89,13 @@ namespace BattleShip_CSharp
             Console.WriteLine(Indent(22) + "You lost, better luck next time.");
         }
 
-        public void InvalidInputMessage()
+        public static void InvalidInputMessage()
         {
             Console.WriteLine("The input you entered is not a location. Please enter a location in format ex: 'A1'.");
             Console.Write("Enter the Alphanumeric location to shoot an artillery shell: ");
         }
 
-        public void LastShotMessage(string lastShot)
+        public static void LastShotMessage(string lastShot)
         {
             switch (lastShot)
             {
@@ -122,7 +122,7 @@ namespace BattleShip_CSharp
 
         private void PlaceShip()
         {
-            Random rand = new Random();
+            Random rand = new();
             int shipDirection = rand.Next(0, 1);
             ship[0, 0] = rand.Next(0, 9);
             ship[0, 1] = rand.Next(0, 9);
