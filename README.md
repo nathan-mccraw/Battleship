@@ -22,4 +22,4 @@ This was my introduction to C# application.  I utilized class based object orien
 
 
 #### Author
-Nathan McCraw -- Inspiring Software Developer [LinkedIn](https://www.linkedin.com/in/nathan-mccraw-5291535b/) [Personal Website - In Production]
+Nathan McCraw -- Software Developer [LinkedIn](https://www.linkedin.com/in/nathan-mccraw-5291535b/) [Personal Website - In Production]
