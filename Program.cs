@@ -78,23 +78,26 @@ namespace BattleShip_CSharp
 
         public static bool IsInputInvalid(string playerGuess)
         {
+            bool validation;
             //65-74 for A-J, 97-106 for a-j, 48-57 for 0-9
 
             if (playerGuess.Length < 2)
-                return true;
+                validation = true;
 
             if (playerGuess[0] < 65 || (playerGuess[0] > 74 && playerGuess[0] < 97) || (playerGuess[0] > 106))
-                return true;
+                validation = true;
 
             if (playerGuess.Length > 2)
                 if (playerGuess.Length == 3 && playerGuess[1] == 49 && playerGuess[2] == 48)
-                    return false;
+                    validation = false;
                 else
-                    return true;
+                    validation = true;
             else if (playerGuess[1] < 49 || playerGuess[1] > 57)
-                return true;
+                validation = true;
             else
-                return false;
+                validation = false;
+
+            return validation;
         }
     }
 }
