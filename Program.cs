@@ -13,7 +13,7 @@ namespace BattleShip_CSharp
             {
                 string playerGuess = "";
                 string lastShot = "";
-                int turnsRemaining = 20;
+                int turnsRemaining = 8;
                 int hitShip = 0;
                 GameBoard board = new GameBoard();
 
