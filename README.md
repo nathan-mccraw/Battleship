@@ -18,8 +18,8 @@ To use the battleship console application:
 
 ## Summary
 
-This was my introduction to C# application.  I utilized class based object orientated programing to define a class for the game board and the player's shot at the ship.  I used a constructor function in both class objects; in the player shot class, the constructor function takes the input from the user: a string containing an alpha numeric, and turns it into an array of two integers: the x value and y value corresponding to a location on the game board. This location is saved in a class property, and is used in the program logic to determine if the player hit the ship.  The board class utilizes a constructor function to 'set' the values in the board array to the default value of '-' which indicates no shot was fired at that location. Methods defined on the board class include the display of game messages, ship placement, and shot placement.
+This was my introduction to C# application.  I utilized class-based object orientated programing to define a class for the game board and the player's shot at the ship.  I used a constructor function in both class objects; in the player shot class, the constructor function takes the input from the user: a string containing an alpha numeric and turns it into an array of two integers: the x value and y value corresponding to a location on the game board. This location is saved in a class property and is used in the program logic to determine if the player hit the ship.  The board class utilizes a constructor function to 'set' the values in the board array to the default value of '-' which indicates no shot was fired at that location. Methods defined on the board class include the display of game messages, ship placement, and shot placement.
 
 
 #### Author
-Nathan McCraw -- Software Developer [LinkedIn](https://www.linkedin.com/in/nathan-mccraw-5291535b/) [Personal Website - In Production]
+Nathan McCraw -- Software Developer [LinkedIn](https://www.linkedin.com/in/nathan-mccraw-5291535b/) | [Personal Website](https://www.nathanmccraw.com/)
