@@ -16,24 +16,16 @@ namespace BattleShip_CSharp
                 int hitShip = 0;
                 GameBoard board = new();
 
-                Console.Clear();
-                Console.WriteLine("Welcome to Battleship console App!");
-                Console.WriteLine();
-                Console.WriteLine("Press any key to start the game");
-                Console.ReadKey();
+                board.DisplayStartMessage();
 
                 do
                 {
-                    Console.Clear();
-                    GameBoard.DisplayHeader();
-                    board.DisplayBoard();
-                    GameBoard.LastShotMessage(lastShot);
-                    board.DisplayShootMessage(turnsRemaining);
+                    board.StartGame(lastShot, turnsRemaining);
                     string playerGuess = Console.ReadLine();
 
-                    while (IsInputInvalid(playerGuess))
+                    while (board.IsInputInvalid(playerGuess))
                     {
-                        GameBoard.InvalidInputMessage();
+                        board.InvalidInputMessage();
                         playerGuess = Console.ReadLine();
                     };
 
@@ -73,27 +65,6 @@ namespace BattleShip_CSharp
                 Console.WriteLine("Press any key to return to the main menu or enter 'q' to quit");
                 menuSelection = (char)Console.Read();
             } while (menuSelection != 'q');
-        }
-
-        public static bool IsInputInvalid(string playerGuess)
-        {
-            //Ascii values: 65-74 for A-J, 97-106 for a-j, 48-57 for 0-9
-            bool isInvalid;
-
-            if (playerGuess.Length < 2 || playerGuess[0] < 65 || (playerGuess[0] > 74 && playerGuess[0] < 97) || (playerGuess[0] > 106 || playerGuess[1] > 57))
-                return isInvalid = true;
-
-            if (playerGuess.Length > 2)
-                if (playerGuess.Length == 3 && playerGuess[1] == 49 && playerGuess[2] == 48)
-                    isInvalid = false;
-                else
-                    isInvalid = true;
-            else if (playerGuess[1] < 49)
-                isInvalid = true;
-            else
-                isInvalid = false;
-
-            return isInvalid;
         }
     }
 }

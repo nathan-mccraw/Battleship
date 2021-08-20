@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using static System.Console;
 
 namespace BattleShip_CSharp
 {
@@ -21,101 +22,140 @@ namespace BattleShip_CSharp
             PlaceShip();
         }
 
+        public void DisplayStartMessage()
+        {
+            Clear();
+            WriteLine("Welcome to Battleship console App!");
+            WriteLine();
+            WriteLine("Press any key to start the game");
+            ReadKey();
+        }
+
+        public void StartGame(string lastShot, int turnsRemaining)
+        {
+            Clear();
+            DisplayHeader();
+            DisplayBoard();
+            LastShotMessage(lastShot);
+            DisplayShootMessage(turnsRemaining);
+        }
+
+        public bool IsInputInvalid(string playerGuess)
+        {
+            //Ascii values: 65-74 for A-J, 97-106 for a-j, 48-57 for 0-9
+            bool isInvalid;
+
+            if (playerGuess.Length < 2 || playerGuess[0] < 65 || (playerGuess[0] > 74 && playerGuess[0] < 97) || (playerGuess[0] > 106 || playerGuess[1] > 57))
+                return isInvalid = true;
+
+            if (playerGuess.Length > 2)
+                if (playerGuess.Length == 3 && playerGuess[1] == 49 && playerGuess[2] == 48)
+                    isInvalid = false;
+                else
+                    isInvalid = true;
+            else if (playerGuess[1] < 49)
+                isInvalid = true;
+            else
+                isInvalid = false;
+
+            return isInvalid;
+        }
+
         public void DisplayBoard()
         {
             int[] colLabel = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
             char[] rowLabel = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J' };
 
-            Console.Write(Indent(10));
+            Write(Indent(10));
             foreach (int i in colLabel)
             {
                 if (i > 9)
-                    Console.Write("|  {0} ", i);
-                else Console.Write("|  {0}  ", i);
+                    Write("|  {0} ", i);
+                else Write("|  {0}  ", i);
             }
-            Console.Write("|");
+            Write("|");
 
-            Console.WriteLine();
+            WriteLine();
             for (int i = 0; i < board.GetLength(0); i++)
             {
-                Console.Write(Indent(8));
-                Console.Write(rowLabel[i] + " ");
+                Write(Indent(8));
+                Write(rowLabel[i] + " ");
                 for (int j = 0; j < board.GetLength(1); j++)
-                    Console.Write("|  {0}  ", board[i, j]);
+                    Write("|  {0}  ", board[i, j]);
 
-                Console.Write("|");
-                Console.WriteLine();
+                Write("|");
+                WriteLine();
             };
-            Console.WriteLine();
+            WriteLine();
         }
 
-        public static void DisplayHeader()
+        public void DisplayHeader()
         {
             char[] header1 = Enumerable.Repeat('*', 37).ToArray();
 
-            Console.WriteLine();
-            Console.Write(Indent(22));
-            Console.WriteLine(header1);
-            Console.WriteLine();
-            Console.WriteLine(Indent(22) + "*" + Indent(9) + "Battleship Game!" + Indent(10) + "*");
-            Console.WriteLine();
-            Console.Write(Indent(22));
-            Console.WriteLine(header1);
-            Console.WriteLine();
+            WriteLine();
+            Write(Indent(22));
+            WriteLine(header1);
+            WriteLine();
+            WriteLine(Indent(22) + "*" + Indent(9) + "Battleship Game!" + Indent(10) + "*");
+            WriteLine();
+            Write(Indent(22));
+            WriteLine(header1);
+            WriteLine();
         }
 
         public void DisplayShootMessage(int turnsLeft)
         {
-            Console.WriteLine();
-            Console.WriteLine(Indent(18) + "O - Location of a miss; X - Location of a hit");
-            Console.WriteLine(Indent(18) + "You have {0} turns remaining to sink the ship!", turnsLeft);
-            Console.WriteLine();
-            Console.Write("Enter the Alphanumeric location to shoot an artillery shell: ");
+            WriteLine();
+            WriteLine(Indent(18) + "O - Location of a miss; X - Location of a hit");
+            WriteLine(Indent(18) + "You have {0} turns remaining to sink the ship!", turnsLeft);
+            WriteLine();
+            Write("Enter the Alphanumeric location to shoot an artillery shell: ");
         }
 
         public void DisplayWinMessage()
         {
-            Console.Clear();
+            Clear();
             DisplayHeader();
             DisplayBoard();
-            Console.WriteLine(Indent(35) + "YOU WIN!!!");
+            WriteLine(Indent(35) + "YOU WIN!!!");
         }
 
         public void DisplayLoseMessage()
         {
-            Console.Clear();
+            Clear();
             DisplayHeader();
             DisplayBoard();
-            Console.WriteLine(Indent(22) + "You lost, better luck next time.");
+            WriteLine(Indent(22) + "You lost, better luck next time.");
         }
 
-        public static void InvalidInputMessage()
+        public void InvalidInputMessage()
         {
-            Console.WriteLine("The input you entered is not a location. Please enter a location in format ex: 'A1'.");
-            Console.Write("Enter the Alphanumeric location to shoot an artillery shell: ");
+            WriteLine("The input you entered is not a location. Please enter a location in format ex: 'A1'.");
+            Write("Enter the Alphanumeric location to shoot an artillery shell: ");
         }
 
-        public static void LastShotMessage(string lastShot)
+        public void LastShotMessage(string lastShot)
         {
             switch (lastShot)
             {
                 case "RepeatShot":
-                    Console.WriteLine(Indent(18) + "You repeated a shot, you lose a turn!");
-                    Console.WriteLine();
+                    WriteLine(Indent(18) + "You repeated a shot, you lose a turn!");
+                    WriteLine();
                     break;
 
                 case "ShotHit":
-                    Console.WriteLine(Indent(18) + "Your shot hit the ship!! Keep it Up");
-                    Console.WriteLine();
+                    WriteLine(Indent(18) + "Your shot hit the ship!! Keep it Up");
+                    WriteLine();
                     break;
 
                 case "ShotMissed":
-                    Console.WriteLine(Indent(18) + "You didn't hit anything, keep trying.");
-                    Console.WriteLine();
+                    WriteLine(Indent(18) + "You didn't hit anything, keep trying.");
+                    WriteLine();
                     break;
 
                 default:
-                    Console.WriteLine();
+                    WriteLine();
                     break;
             }
         }
